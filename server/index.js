@@ -18,9 +18,10 @@ app.use(session({
     }
 }))
 
-app.post('/auth/login', ctrl.login )
+app.post('/auth/register', ctrl.register )
+app.post('/auth/login', ctrl.login)
 
 massive(CONNECTION_STRING).then(db =>{
     app.set('db', db)
     app.listen(SERVER_PORT, () => console.log(`I just ate ${SERVER_PORT} chocolate covered tacos`))
-})
+}) 

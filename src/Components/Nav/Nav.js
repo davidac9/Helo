@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 class Nav extends Component {
     componentDidMount(){
 
-        console.log(this.props.location)
+        console.log(this.props)
     }
     render() {
         return (
@@ -22,6 +22,8 @@ class Nav extends Component {
                     <Link to='/'>
                         <button>Logout</button>
                     </Link>
+                    <h4>Welcome,{this.props.username}</h4>
+                    <img src={this.props.profile_image} alt="" />
                 </div>
                     </>) : null}
             </div>
@@ -29,4 +31,9 @@ class Nav extends Component {
     }
 }
 
-export default connect()(withRouter(Nav))
+function mapStateToProps(reduxState) {
+    const {username, profile_image} = reduxState
+    return {username, profile_image}
+}
+
+export default connect(mapStateToProps)(withRouter(Nav))
