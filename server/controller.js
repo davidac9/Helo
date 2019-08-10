@@ -23,5 +23,20 @@ module.exports = {
             req.session.user = user[0]
             return res.status(200).send({message: 'Logged in', user: req.session.user, loggedIn: true})
         }
+    },
+    showPosts: async (req, res) => {
+        const db = req.app.get('db')
+        console.log(req.query)
+        // console.log(req.params)
+        
+        // console.dir(req.body)
+        // console.log('hey')
+        // req.params = req.body.title
+        const posts = await db.search_posts(`%${req.body.title}%`)
+        // if(!req.params) {
+        // const posts = await db.show_all_posts()
+        //     return res.status(200).send(posts)
+        // }
+        return res.status(200).send(posts)
     }
 }

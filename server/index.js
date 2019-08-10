@@ -20,6 +20,7 @@ app.use(session({
 
 app.post('/auth/register', ctrl.register )
 app.post('/auth/login', ctrl.login)
+app.get('/api/posts', ctrl.showPosts)
 
 massive(CONNECTION_STRING).then(db =>{
     app.set('db', db)
