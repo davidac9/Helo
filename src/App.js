@@ -9,7 +9,6 @@ import routes from './routes'
 import {withRouter} from 'react-router'
 
 function App(props) {
-  console.log(props)
   return (
     <div className="App">
       

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Post from '../Post/Post'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 // import { connect } from 'http2';
 
 class Dashboard extends Component {
@@ -47,24 +48,28 @@ class Dashboard extends Component {
                 </div>
                 <div className="posts">
                     {this.state.myPosts === true ? (this.state.posts.map((el, i) => (
-                        <div>
-                        <Post
-                        key={el.title}
-                        title={el.title}
-                        image={el.post_image}
-                        content={el.content}
-                        profile_image={el.profile_image}
-                        />    
+                        <div><Link to={`/post/${el.post_id}`} >
+                        <div className="post-container">
+                        <header>
+                        <h4>
+                        {el.title}
+                        </h4>
+                        <img className="post-profile-pic" src={el.profile_image} alt=''/>
+                        </header>
+                        </div></Link>
+
                         </div>
                     ))): (this.state.posts.filter(el => ( el.user_id !== this.props.user_id)).map((el, i) => (
                         <div>
-                        <Post
-                        key={el.title}
-                        title={el.title}
-                        image={el.post_image}
-                        content={el.content}
-                        profile_image={el.profile_image}
-                        />    
+                            <Link to={`/post/${el.post_id}`} ><div className="post-container">
+                            <header>
+                            <h4>
+                            {el.title}
+                            </h4>
+                            <img className="post-profile-pic" src={el.profile_image} alt=''/>
+                            </header>
+                            </div></Link>
+
                         </div>
                     ))) }
                 </div>

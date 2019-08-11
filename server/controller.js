@@ -26,6 +26,10 @@ module.exports = {
     },
     showPosts: async (req, res) => {
         const db = req.app.get('db')
+        if (req.query.post_id) {
+            const posts = await db.search_post_id(`${req.query.post_id}`)
+            return res.status(200).send(posts)
+        }
         const posts = await db.search_posts(`%${req.query.title}%`)
         return res.status(200).send(posts)
     }
