@@ -20,8 +20,8 @@ export default (state=initialState, action) => {
     const {type, payload} = action
     switch (type) {
         case SET_USER:
-            const {username, profile_image} = payload
-            return {...state, username, profile_image}
+            const {username, profile_image, user_id} = payload
+            return {...state, username, profile_image, user_id}
         default: return state
     }
 }

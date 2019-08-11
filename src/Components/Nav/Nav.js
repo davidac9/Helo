@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 class Nav extends Component {
     componentDidMount(){
 
-        console.log(this.props)
     }
     render() {
         return (

@@ -36,9 +36,9 @@ class Auth extends Component {
             passwordInput: password,
         } = this.state
         axios.post('/auth/login', {username, password}).then(res => {
-            const {username, profile_image} = res.data.user
+            const {username, profile_image, user_id} = res.data.user
             console.log(res.data.user)
-            this.props.setUser({username, profile_image})
+            this.props.setUser({username, profile_image, user_id})
             this.props.history.push('/dashboard')
         })
         .catch(err => {

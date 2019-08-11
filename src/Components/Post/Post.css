@@ -1,0 +1,19 @@
+.Post {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.post-profile-pic {
+    max-height: 50px;
+}
+.post-image {
+    max-height: 150px;
+}
+.content-container {
+    display: flex;
+    /* justify-content: center; */
+
+    background-color: aqua;
+    width: 350px;
+}
