@@ -1,10 +1,20 @@
 import React, {Component} from 'react'
 import {withRouter , Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import axios from 'axios'
+import { setUser, logoutUser } from '../../ducks/reducer'
 
 class Nav extends Component {
     componentDidMount(){
-
+        axios.get('/api/auth/me').then(res => {
+            const {username, profile_image, user_id} = res.data.user
+            this.props.setUser({username, profile_image, user_id})
+        })
+    }
+    logout = () => {
+        axios.post('/api/auth/logout').then(() => {
+            this.props.logoutUser()
+        })
     }
     render() {
         return (
@@ -19,9 +29,9 @@ class Nav extends Component {
                         <button>New Post</button>
                     </Link>
                     <Link to='/'>
-                        <button>Logout</button>
+                        <button onClick={this.logout}>Logout</button>
                     </Link>
-                    <h4>Welcome,{this.props.username}</h4>
+                    <h4>Welcome, {this.props.username}</h4>
                     <img src={this.props.profile_image} alt="" />
                 </div>
                     </>) : null}
@@ -31,8 +41,8 @@ class Nav extends Component {
 }
 
 function mapStateToProps(reduxState) {
-    const {username, profile_image} = reduxState
-    return {username, profile_image}
+    const {username, profile_image, user_id} = reduxState
+    return {username, profile_image, user_id}
 }
 
-export default connect(mapStateToProps)(withRouter(Nav))
+export default connect(mapStateToProps, {setUser, logoutUser})(withRouter(Nav))
