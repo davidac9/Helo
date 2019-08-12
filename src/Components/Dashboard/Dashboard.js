@@ -36,13 +36,19 @@ class Dashboard extends Component {
         })
     }
 
+    resetSearch = () => {
+        this.setState({
+            searchInput: ''
+        })
+    }
+
     render() {
         return (
             <div className="Dashboard">
                 <div className="search">
-                    <input type="text" placeholder="Search" onChange={e=> this.handleChange(e)} />
-                    <button onClick={this.getPosts} >Search</button>
-                    <button>Reset</button>
+                    <input type="text" placeholder="Search" onChange={e=> this.handleChange(e)} value={this.state.searchInput} />
+                    <button onClick={this.getPosts}  >Search</button>
+                    <button onClick={this.resetSearch} >Reset</button>
                     <h5>Hide my posts</h5>
                     <input type="checkbox" onChange={() => this.handleChangeUserPosts()} />
                 </div>
