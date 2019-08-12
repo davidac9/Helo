@@ -38,6 +38,7 @@ module.exports = {
         return res.status(200).send(posts)
     },
     authMe: async (req, res) => {
+        console.log(req.session)
         return res.status(200).send({message: 'component happened', user: req.session.user, loggedIn: true})
     },
     logout: (req, res) => {

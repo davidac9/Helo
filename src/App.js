@@ -6,7 +6,7 @@ import './App.css';
 import Nav from './Components/Nav/Nav'
 // import Post from './Components/Post/Post'
 import routes from './routes'
-import {withRouter} from 'react-router'
+// import {withRouter} from 'react-router'
 
 function App(props) {
   return (

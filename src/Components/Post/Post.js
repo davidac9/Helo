@@ -22,7 +22,6 @@ class Post extends Component {
     componentDidMount() {
         // console.log(this.state.post)
         this.getPost()
-        console.log(this.state.posts)
     }
     render() {
         

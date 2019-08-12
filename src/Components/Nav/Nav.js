@@ -7,8 +7,11 @@ import { setUser, logoutUser } from '../../ducks/reducer'
 class Nav extends Component {
     componentDidMount(){
         axios.get('/api/auth/me').then(res => {
-            const {username, profile_image, user_id} = res.data.user
-            this.props.setUser({username, profile_image, user_id})
+            if(res.data.user) {
+
+                const {username, profile_image, user_id} = res.data.user
+                this.props.setUser({username, profile_image, user_id})
+            } 
         })
     }
     logout = () => {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Post from '../Post/Post'
+// import Post from '../Post/Post'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
@@ -48,7 +48,7 @@ class Dashboard extends Component {
                 </div>
                 <div className="posts">
                     {this.state.myPosts === true ? (this.state.posts.map((el, i) => (
-                        <div><Link to={`/post/${el.post_id}`} >
+                        <div key={i}><Link to={`/post/${el.post_id}`} >
                         <div className="post-container">
                         <header>
                         <h4>
